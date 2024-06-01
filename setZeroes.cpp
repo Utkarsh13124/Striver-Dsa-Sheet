@@ -1,5 +1,6 @@
 // leetcode 73 https://leetcode.com/problems/set-matrix-zeroes/description/
 
+#include<bits/stdc++.h>
 class Solution {
 public:
 // my initial approache uses two unordered set two storing two sets of row, and columns.
