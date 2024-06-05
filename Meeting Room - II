@@ -56,3 +56,4 @@ int solve2(vector<vector<int> > &A){
             heap.push(A[i][1]);
         }
         return rooms;
+}
