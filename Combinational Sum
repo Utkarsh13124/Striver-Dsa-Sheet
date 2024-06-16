@@ -13,7 +13,7 @@ void backtrack(vector<int> &cand, int tar, int curr ,vector<int> &res,int idx){
     }
     for(int i = idx;i<cand.size();i++){
         curr+=cand[i];
-        res.push_back(cand[i]);
+        res.push_back(cand[i]); 
 
         backtrack(cand,tar,curr,res,i);
 
