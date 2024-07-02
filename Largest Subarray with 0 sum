@@ -1,0 +1,27 @@
+/*You are required to complete this function*/
+
+class Solution{
+    public:
+    int maxLen(vector<int>&arr, int n)
+    {   
+        vector<int> pre(n);
+        pre[0] = arr[0];
+        for(int i = 1;i<n;i++){
+            pre[i] = arr[i] + pre[i-1];
+        }
+        // for(auto it : pre) cout<<it<<" ";
+        unordered_map<int,int> mp;//value , index
+        mp[0] = -1;
+        int ans = 0;
+        for(int i = 0;i<n;i++){
+            if(mp.find(pre[i]) != mp.end()){
+                int temp = i - mp[pre[i]];
+                ans = max(ans,temp);
+            }else{
+                mp[pre[i]] = i;
+            }
+        }
+        // cout<<endl;
+        return ans;
+    }
+};
