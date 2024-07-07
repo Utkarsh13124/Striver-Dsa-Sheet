@@ -1,0 +1,41 @@
+class Solution {
+public:
+    int divSum(vector<int> &nums , int div){
+        int ans = 0, n = nums.size();
+        for(int i= 0; i<n ; i++){
+            ans += ceil(nums[i]*1.0/div); // be careful -ve lies inside
+            // cout<<ans<<" ";
+        }
+        // cout<<endl;
+        return ans;
+    }
+
+    int smallestDivisor(vector<int>& nums, int hld) {
+        // return divSum(nums , 2);
+        // sort(nums.begin(), nums.end()); for just needing the max value i short i can use max_element iterator to excess the maximum value.
+        // our ans could be between 1 to max(nums);
+        int left = 1 , right = *max_element(nums.begin(),nums.end()) , ans;
+        int mid = right;// right is always our ans but we are looking other best ans.
+        while(left <= right){
+            int mid = (left + right)/2;
+            int temp = divSum(nums ,mid);
+            // cout<<mid<<" "<<temp<<"   ";
+            if(temp <= hld){
+                right = mid - 1;
+                ans = mid;// could be removed
+            }
+            // else if(temp < hld){// temp is our divSum 
+                 
+            //     ans = min ( ans , mid);
+            // }
+            else{
+                left = mid + 1;
+            }
+        }
+        // in normal cases our left is equal to ans
+        // because atlast 2 element remains, left right , mid come out left , if left is valid , right goes to left , and left and mid both are same and ans, if right is valid left will pass right and become ans.
+        return ans;// right < left , as right is not our answer , above ahead right  all is our answer 
+
+        
+    }
+};
